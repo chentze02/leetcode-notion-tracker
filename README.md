@@ -227,7 +227,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 Your Name - chentzen02@g.ucla.edu
 
 Project Link:
-[https://github.com/github_username/repo_name](https://github.com/chentze02/leetcode-notion-tracker))
+[https://github.com/chentze02/leetcode-notion-tracker](https://github.com/chentze02/leetcode-notion-tracker)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
