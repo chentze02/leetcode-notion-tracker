@@ -224,11 +224,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) -
-email@email_client.com
+Your Name - chentzen02@g.ucla.edu
 
 Project Link:
-[https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+[https://github.com/github_username/repo_name](https://github.com/chentze02/leetcode-notion-tracker))
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
