@@ -97,6 +97,10 @@ install them.
   ```sh
   Python 3.11
   ```
+- EnvFile
+  ```sh
+  pip install python-dotenv
+  ```
 - Notion
   ```
   Read the Notion Docs on how to obtain a NOTION TOKEN
@@ -108,12 +112,38 @@ install them.
    ```sh
    git clone https://github.com/chentze02/leetcode-notion-tracker.git
    ```
-2. Enter your DATABASE KEY and NOTION TOKEN in the MACROS
-   ```python
-   # TOKEN AND IDS
-   NOTION_TOKEN = "YOUR_NOTION_TOKEN" 
-   DATABASE_ID = "YOUR_DATABASE_ID"
-   ```
+
+2.Setup your token and database id
+
+###### Option 1 (RECOMMENDED)
+
+1. Install the `python-dotenv` package by running `pip install python-dotenv` in
+   your terminal.
+
+2. Create an environment file (e.g., `.env`) in the `/usr/local` directory and
+   populate it with your sensitive information:
+
+`NOTION_TOKEN=YOUR_NOTION_TOKEN DATABASE_ID=YOUR DATABASE ID`
+
+Ensure that the environment file has the appropriate permissions set to protect
+the sensitive data.
+
+1. Update the script to load the environment variables from the file using
+   `load_dotenv()` function from the `dotenv` module. Provide the path to your
+   environment file as an argument to `load_dotenv()`.
+
+Make sure to replace `/usr/local/.env` with the correct path to your environment
+file.
+
+###### Option 2
+
+Enter your DATABASE KEY and NOTION TOKEN in the MACROS
+
+```python
+# TOKEN AND IDS
+NOTION_TOKEN = "YOUR_NOTION_TOKEN" 
+DATABASE_ID = "YOUR_DATABASE_ID"
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

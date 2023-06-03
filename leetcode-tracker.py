@@ -5,17 +5,24 @@ import json
 import argparse
 from requests.exceptions import HTTPError, ConnectionError, Timeout, RequestException
 import sys
+# Load environment variables from file
+from dotenv import load_dotenv
+import os
+
+
+# Specify the path to your environment file
+load_dotenv("/usr/local/bin/.env.leetcode")
 
 # TOKEN AND IDS
-NOTION_TOKEN = "YOUR_NOTION_TOKEN"
-DATABASE_ID = "YOUR_DATABASE_ID"
-
+NOTION_TOKEN = os.getenv("NOTION_TOKEN")
+DATABASE_ID = os.getenv("DATABASE_ID")
 # URL
 NOTION_BASE_URL = "https://api.notion.com/"
 LEETCODE_INFO_URL = "https://lcid.cc/info/"
 LEETCODE_URL = "https://leetcode.com/problems/"
 
 urlDatabase = f"{NOTION_BASE_URL}v1/databases/{DATABASE_ID}"
+urlQueryPages = f"{NOTION_BASE_URL}v1/databases/{DATABASE_ID}/query"
 
 headers = {
     "Authorization": "Bearer " + NOTION_TOKEN,
@@ -82,10 +89,41 @@ def create_page(data: dict):
     return res
 
 
+def present_in_database(leetcode_number):
+    """
+    If num_pages is None, get all pages, otherwise just the defined number.
+    """
+    filterProperties = {
+        "filter": {
+            "property": "Leetcode_ID",
+            "number": {
+                "equals": leetcode_number
+            }
+        }
+    }
+    url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
+
+    response = requests.post(url, json=filterProperties, headers=headers)
+
+    data = response.json()
+
+    # Comment this out to dump all data to a file
+    # with open('db.json', 'w', encoding='utf8') as f:
+    #     json.dump(data, f, ensure_ascii=False, indent=4)
+
+    results = data["results"]
+
+    if len(results) == 0:
+        return None
+
+    return results[0]["id"]
+
+
 def get_pages(num_pages=None):
     """
     If num_pages is None, get all pages, otherwise just the defined number.
     """
+
     url = f"https://api.notion.com/v1/databases/{DATABASE_ID}/query"
 
     get_all = num_pages is None
@@ -126,8 +164,8 @@ def main():
     name = leet_code["title"]
     nameForURL = leet_code["titleSlug"]
 
-    pages = get_pages()
-    page_id = is_question_exists(leetcode_number_input_by_user, pages)
+    page_id = present_in_database(leetcode_number_input_by_user)
+
     if page_id is not None:
         updateData = {
             "Leetcode_ID": {
