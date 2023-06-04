@@ -10,6 +10,8 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
+
+
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -20,6 +22,11 @@
 -->
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
+
+
+## Demo
+https://github.com/chentze02/leetcode-notion-tracker/assets/86126069/b5c0ad3d-e20a-49b3-b448-8b4b49195140
+
 
 <!-- PROJECT LOGO -->
 <br />
