@@ -154,9 +154,13 @@ def main():
         description="Generate leetcode question to fill up Notion for tracking of questions")
     parser.add_argument("leetcode_number", type=int,
                         help="leetcode question number")
+    parser.add_argument(
+        "comment", nargs="?", default="", help="optional comment for the question"
+    )
     args = parser.parse_args()
 
     leetcode_number_input_by_user = args.leetcode_number
+    leetcode_comment_input_by_user = args.comment
 
     leet_code = get_leetcode_info_by_id(leetcode_number_input_by_user)
 
@@ -167,11 +171,20 @@ def main():
     page_id = present_in_database(leetcode_number_input_by_user)
 
     if page_id is not None:
-        updateData = {
-            "Leetcode_ID": {
-                "number": leetcode_number_input_by_user
-            },
-        }
+        if leetcode_comment_input_by_user != "":
+
+            updateData = {
+                "Leetcode_ID": {
+                    "number": leetcode_number_input_by_user
+                },
+                "Notes": {"rich_text": [{"text": {"content": leetcode_comment_input_by_user}}]},
+            }
+        else:
+            updateData = {
+                "Leetcode_ID": {
+                    "number": leetcode_number_input_by_user
+                },
+            }
         update_page(page_id, updateData)
         print(
             f'Question {leetcode_number_input_by_user} updated (Last Done) in the Notion database.')
@@ -199,6 +212,7 @@ def main():
             "Leetcode_ID": {
                 "number": leetcode_number_input_by_user
             },
+            "Notes": {"rich_text": [{"text": {"content": leetcode_comment_input_by_user}}]},
         }
 
         create_page(data)
