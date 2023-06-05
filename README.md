@@ -10,6 +10,8 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
+
+
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -20,6 +22,11 @@
 -->
 
 [![LinkedIn][linkedin-shield]][linkedin-url]
+
+
+## Demo
+https://github.com/chentze02/leetcode-notion-tracker/assets/86126069/b5c0ad3d-e20a-49b3-b448-8b4b49195140
+
 
 <!-- PROJECT LOGO -->
 <br />
@@ -224,11 +231,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) -
-email@email_client.com
+Your Name - chentzen02@g.ucla.edu
 
 Project Link:
-[https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+[https://github.com/chentze02/leetcode-notion-tracker](https://github.com/chentze02/leetcode-notion-tracker)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
